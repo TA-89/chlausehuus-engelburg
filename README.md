@@ -98,3 +98,7 @@ Druck-CSS und Tourenblatt sind implementiert; reale Papier-/PDF-Ausgabe und Date
 30 fiktive Demo-Anfragen; bestehende Sitzungen werden ergänzt, Änderungen bleiben erhalten. Besuchsadresse und Spezialwünsche in Schritt 1, Gschenkli in Schritt 2. Kontakt Brigitte Arnold im Impressum und Demo-Mailfuss. Zugehörigkeit zum Verkehrsverein mit geliefertem Logo.
 Eigenes Chlausehuus-Zeichen (kein offizielles Gemeindewappen): assets/chlausehuus-zeichen.png, mit eingebautem Imagegen erzeugt. Finaler Prompt: Drei Sterne auf schwarz-goldenem Schild, unterer Stern zweifarbig ohne Kreis, kein Horn, freistehende Burgzacken, leicht schräge rot-weisse Mitra, links Bischofsstab; weisser Bart unmittelbar unter der Mitra in derselben Schräglage, Sterne sichtbar, transparenter Hintergrund.
 
+
+## Kalender und reduzierte Startseite
+Startseite zeigt nur Logo, Spruch, Türbild und Anmeldung. Formular und Impressum werden erst auf Klick sichtbar; kein öffentlicher Verwaltungslink. Die Demo-Verwaltung bleibt ausdrücklich ungeschützt. Ein geheimer Link ersetzt keinen serverseitig geschützten Login vor Echtbetrieb.
+Kalender: fünf Gruppen, 15-Minuten-Raster, unverbindliche Wunschvorschläge, Drag-and-drop und Tastaturformular, erlaubte Tage/Zeitfenster, geschützte bestätigte Zeiten, rote Kollisionen inklusive 10 Minuten Puffer. 3–4 Besuche pro Gruppe sind ein Richtwert, kein hartes Limit. Telefon-/Mail-Anfragen können mit mehreren Familien und Kindern manuell erfasst werden, E-Mail ist bei Telefonanfragen optional. Mail-Verfassen öffnet nur einen Entwurf im eigenen Mailprogramm.

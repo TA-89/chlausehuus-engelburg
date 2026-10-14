@@ -3,23 +3,121 @@
   "timezone": "Europe/Zurich",
   "version": 1,
   "publicEndpoints": [
-    {"method":"POST","path":"/api/requests","auth":"anonymous-rate-limited","notes":"Server validates all children, town, one preferred day and per-day windows. Enforce closure, complete documents after deadline. Idempotency-Key mandatory. Return only opaque receipt. Persist request and acknowledgement-mail outbox atomically."},
-    {"method":"POST","path":"/api/edit-session","auth":"opaque-family-token","notes":"Exchange token for a short secure session scoped to exactly one request. Server stores token hash only."},
-    {"method":"GET","path":"/api/my-request","auth":"family-session","notes":"Only this family visit, never list other requests."},
-    {"method":"PATCH","path":"/api/my-request","auth":"family-session","notes":"Enforce document deadline on server. Confirmed slot/tour/status never accepted from family payload."},
-    {"method":"POST","path":"/api/my-request/children/:childId/uploads","auth":"family-session","notes":"Private validated upload linked to owned child, enforce deadline and size/type. Finalize only after verified storage."}
+    {
+      "method": "POST",
+      "path": "/api/requests",
+      "auth": "anonymous-rate-limited",
+      "notes": "Server validates all children, town, one preferred day and per-day windows. Enforce closure, complete documents after deadline. Idempotency-Key mandatory. Return only opaque receipt. Persist request and acknowledgement-mail outbox atomically."
+    },
+    {
+      "method": "POST",
+      "path": "/api/edit-session",
+      "auth": "opaque-family-token",
+      "notes": "Exchange token for a short secure session scoped to exactly one request. Server stores token hash only."
+    },
+    {
+      "method": "GET",
+      "path": "/api/my-request",
+      "auth": "family-session",
+      "notes": "Only this family visit, never list other requests."
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/my-request",
+      "auth": "family-session",
+      "notes": "Enforce document deadline on server. Confirmed slot/tour/status never accepted from family payload."
+    },
+    {
+      "method": "POST",
+      "path": "/api/my-request/children/:childId/uploads",
+      "auth": "family-session",
+      "notes": "Private validated upload linked to owned child, enforce deadline and size/type. Finalize only after verified storage."
+    }
   ],
   "adminEndpoints": [
-    {"method":"GET","path":"/api/admin/requests","auth":"admin","notes":"Paginated private data, never cache publicly."},
-    {"method":"POST","path":"/api/admin/requests/:id/confirm","auth":"admin","notes":"Transactional immutable slot and outbox. Optimistic version check and concurrent capacity check. Email state independent."},
-    {"method":"PATCH","path":"/api/admin/requests/:id/planning","auth":"admin","notes":"Duration, tour, order; reject changes to a locked tour or confirmed slot. Log changes."},
-    {"method":"PATCH","path":"/api/admin/requests/:id/children","auth":"admin","notes":"Explicit audited correction including after deadline."},
-    {"method":"POST","path":"/api/admin/requests/:id/retry-mail","auth":"admin","notes":"Enqueue idempotent retry of failed or unsent mail. Never unconfirm appointment."},
-    {"method":"PATCH","path":"/api/admin/day-hours/:date","auth":"admin","notes":"Affect new planning only. Confirmed visits unchanged."},
-    {"method":"POST","path":"/api/admin/tours/:id/lock","auth":"admin","notes":"Validate confirmed visits, time/reordering conflicts, capacity."},
-    {"method":"GET","path":"/api/admin/tours/:id/print","auth":"admin","notes":"Private print package with complete child text and attachments, no public URL."}
+    {
+      "method": "GET",
+      "path": "/api/admin/requests",
+      "auth": "admin",
+      "notes": "Paginated private data, never cache publicly."
+    },
+    {
+      "method": "POST",
+      "path": "/api/admin/requests/:id/confirm",
+      "auth": "admin",
+      "notes": "Transactional immutable slot and outbox. Optimistic version check and concurrent capacity check. Email state independent."
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/admin/requests/:id/planning",
+      "auth": "admin",
+      "notes": "Duration, tour, order; reject changes to a locked tour or confirmed slot. Log changes."
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/admin/requests/:id/children",
+      "auth": "admin",
+      "notes": "Explicit audited correction including after deadline."
+    },
+    {
+      "method": "POST",
+      "path": "/api/admin/requests/:id/retry-mail",
+      "auth": "admin",
+      "notes": "Enqueue idempotent retry of failed or unsent mail. Never unconfirm appointment."
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/admin/day-hours/:date",
+      "auth": "admin",
+      "notes": "Affect new planning only. Confirmed visits unchanged."
+    },
+    {
+      "method": "POST",
+      "path": "/api/admin/tours/:id/lock",
+      "auth": "admin",
+      "notes": "Validate confirmed visits, time/reordering conflicts, capacity."
+    },
+    {
+      "method": "GET",
+      "path": "/api/admin/tours/:id/print",
+      "auth": "admin",
+      "notes": "Private print package with complete child text and attachments, no public URL."
+    }
   ],
-  "storageEntities": ["requests","families","children","availability_by_day","private_child_documents","appointments","tours","tour_visits","day_hours","hashed_edit_tokens","mail_outbox","mail_delivery_events","audit_log"],
-  "backgroundJobs": [{"name":"missing-documents-reminder","localDate":"2026-11-23","timezone":"Europe/Zurich","eligibility":"missing documents AND no existing reminder for request and season","uniqueKey":"request_id + season + reminder_kind"}],
-  "configurationStillNeeded": ["backend provider and data region","admin account","verified mail sender","mother phone","responsible contact","retention period","registration opening date/time","verified village crest","domain spelling"]
+  "storageEntities": [
+    "requests",
+    "families",
+    "children",
+    "availability_by_day",
+    "private_child_documents",
+    "appointments",
+    "tours",
+    "tour_visits",
+    "day_hours",
+    "hashed_edit_tokens",
+    "mail_outbox",
+    "mail_delivery_events",
+    "audit_log"
+  ],
+  "backgroundJobs": [
+    {
+      "name": "missing-documents-reminder",
+      "localDate": "2026-11-23",
+      "timezone": "Europe/Zurich",
+      "eligibility": "missing documents AND no existing reminder for request and season",
+      "uniqueKey": "request_id + season + reminder_kind"
+    }
+  ],
+  "configurationStillNeeded": [
+    "backend provider and data region",
+    "admin account",
+    "verified mail sender",
+    "retention period",
+    "registration opening date/time",
+    "domain spelling"
+  ],
+  "adminSecurity": {
+    "requiredBeforeLive": "Server-side authenticated session and authorization on every admin endpoint; password login for Chlausemueter, preferably with MFA. An unlisted link is not access control.",
+    "demo": "Public fictional sessionStorage demo only"
+  }
 }
