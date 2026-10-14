@@ -43,7 +43,11 @@ Die Unterlagenbearbeitung in der Demo ist direkt nach dem Absenden möglich; ein
 
 Den Inhalt dieses Ordners als Wurzel eines eigenen Repositorys verwenden. Das private Originalbild im übergeordneten Ordner darf nicht in das Repository gelangen. Der Workflow unter .github/workflows/pages.yml prüft die Fachlogik und veröffentlicht ausschliesslich die explizit aufgelisteten öffentlichen HTML-, CSS-, JS- und Asset-Dateien. Dokumentation, Tests und Screenshots werden nicht Teil der Pages-Seite.
 
-Noch nicht veröffentlicht: `gh auth status` meldete am 14. Oktober 2026 keine Anmeldung. Repo/Konto und Pages-Freischaltung sind noch offen. Erst nach Review der Demo und verfügbarer GitHub-Anmeldung ein Repository anlegen, main pushen und GitHub Pages auf GitHub Actions stellen. Keine Domain wurde registriert.
+Repository: https://github.com/TA-89/chlausehuus-engelburg
+
+GitHub Pages: https://ta-89.github.io/chlausehuus-engelburg/
+
+Am 14. Oktober 2026 wurde das Repository auf ausdrücklichen Nutzerwunsch öffentlich erstellt, hochgeladen und GitHub Pages mit GitHub Actions aktiviert. Jeder Push auf main führt die Tests aus und veröffentlicht die Demo. Keine eigene Domain wurde registriert. Die öffentliche Verwaltung enthält weiterhin nur Beispieldaten und ist kein geschütztes Produktivsystem.
 
 ## Produktionsanschluss
 
@@ -82,4 +86,4 @@ Schrift: DM Sans via Google Fonts mit System-Fallback. Karte: Leaflet 1.9.4 via 
 
 Automatisierte Fachlogiktests und JS-Syntaxprüfung erfolgreich. Im Codex-Browser: vollständige Anfrage mit erfundenen Angaben, Wiederfinden in Verwaltung, Fixieren mit simuliertem Mailfehler, geschützter Beginn, Mailwiederholung, Tourwechsel bei unveränderter Zeit, Tourfixierung und Kartenladen geprüft. Desktopansicht und 390-Pixel-Mobilansicht visuell geprüft; keine horizontale Überbreite auf der Startseite. Browserkonsole nach Formularweg ohne Warnungen/Fehler. Screenshots unter artifacts/ (nicht im Deployment).
 
-Druck-CSS und Tourenblatt sind implementiert; reale Papier-/PDF-Ausgabe und Dateianhänge sind noch nicht abschliessend geprüft. Kein Produktionsbetrieb, keine öffentliche Veröffentlichung und kein tatsächlicher Mailversand wurden getestet oder behauptet.
+Druck-CSS und Tourenblatt sind implementiert; reale Papier-/PDF-Ausgabe und Dateianhänge sind noch nicht abschliessend geprüft. Kein produktiver Anmeldebetrieb und kein tatsächlicher Mailversand sind angeschlossen. Die Veröffentlichung auf GitHub Pages ist ausschliesslich eine öffentliche Demo.
