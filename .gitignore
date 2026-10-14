@@ -1,6 +1,7 @@
 node_modules/
 public/
 artifacts/
+research/
 .env*
 !.env.example
 *.log
