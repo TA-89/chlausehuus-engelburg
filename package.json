@@ -1,0 +1,1 @@
+{"name":"chlausehuus-engelburg","private":true,"type":"module","scripts":{"dev":"node server.mjs","test":"node --test tests/*.test.mjs","check":"node --check app.js && node --check admin.js && node --check domain.js"}}
