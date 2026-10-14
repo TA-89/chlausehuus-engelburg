@@ -12,3 +12,5 @@
 .visitor-detail p{font-size:13px;line-height:1.8;margin:7px 0 0}
 @media(max-width:900px){.visitors{padding:60px 5% 0;gap:6%}.visitors-copy h2{font-size:35px}}
 @media(max-width:620px){.visitors{grid-template-columns:1fr;padding:45px 6% 0;gap:30px}.visitors-photo{max-width:360px}.visitors-copy h2{font-size:37px}.visitors-copy .eyebrow{font-size:8px;letter-spacing:1.25px}.visitors-copy>p:not(.eyebrow){margin:20px 0 25px}}
+
+.brand-emblem{width:64px;height:78px;object-fit:contain}.hero h1{font-size:clamp(2.6rem,4.4vw,4.8rem);line-height:1.08}.hero .intro{font-size:1rem}.imprint{display:grid;grid-template-columns:1fr 1fr;gap:3rem;border-top:1px solid #ddd4c6}.imprint h2{font-size:2rem}.imprint address{font-style:normal;line-height:1.9}.association-logo{width:100%;max-width:320px;height:auto}footer{flex-wrap:wrap}@media(max-width:700px){.imprint{grid-template-columns:1fr}.brand-emblem{width:46px;height:60px}.hero h1{font-size:2.7rem}}

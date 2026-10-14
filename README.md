@@ -93,3 +93,8 @@ Schrift: DM Sans via Google Fonts mit System-Fallback. Karte: Leaflet 1.9.4 via 
 Automatisierte Fachlogiktests und JS-Syntaxprüfung erfolgreich. Im Codex-Browser: vollständige Anfrage mit erfundenen Angaben, Wiederfinden in Verwaltung, Fixieren mit simuliertem Mailfehler, geschützter Beginn, Mailwiederholung, Tourwechsel bei unveränderter Zeit, Tourfixierung und Kartenladen geprüft. Desktopansicht und 390-Pixel-Mobilansicht visuell geprüft; keine horizontale Überbreite auf der Startseite. Browserkonsole nach Formularweg ohne Warnungen/Fehler. Screenshots unter artifacts/ (nicht im Deployment).
 
 Druck-CSS und Tourenblatt sind implementiert; reale Papier-/PDF-Ausgabe und Dateianhänge sind noch nicht abschliessend geprüft. Kein produktiver Anmeldebetrieb und kein tatsächlicher Mailversand sind angeschlossen. Die Veröffentlichung auf GitHub Pages ist ausschliesslich eine öffentliche Demo.
+
+## Aktualisierung 14. Oktober
+30 fiktive Demo-Anfragen; bestehende Sitzungen werden ergänzt, Änderungen bleiben erhalten. Besuchsadresse und Spezialwünsche in Schritt 1, Gschenkli in Schritt 2. Kontakt Brigitte Arnold im Impressum und Demo-Mailfuss. Zugehörigkeit zum Verkehrsverein mit geliefertem Logo.
+Eigenes Chlausehuus-Zeichen (kein offizielles Gemeindewappen): assets/chlausehuus-zeichen.png, mit eingebautem Imagegen erzeugt. Finaler Prompt: Drei Sterne auf schwarz-goldenem Schild, unterer Stern zweifarbig ohne Kreis, kein Horn, freistehende Burgzacken, leicht schräge rot-weisse Mitra, links Bischofsstab; weisser Bart unmittelbar unter der Mitra in derselben Schräglage, Sterne sichtbar, transparenter Hintergrund.
+
