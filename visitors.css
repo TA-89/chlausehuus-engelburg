@@ -1,0 +1,14 @@
+.visitors{max-width:1280px;margin:0 auto;padding:85px 3% 15px;display:grid;grid-template-columns:.9fr 1fr;gap:10%;align-items:center}
+.visitors-photo{position:relative;margin:0;max-width:445px;justify-self:center;width:100%}
+.visitors-photo img{display:block;width:100%;height:auto;border-radius:6px 90px 6px 6px;background:#d9d5ca}
+.visitors-photo figcaption{position:static;color:var(--ink);font-size:12px;margin-top:14px;line-height:1.5}
+.visitors-photo figcaption small{color:var(--muted);font-size:9px;letter-spacing:.6px;margin-top:4px}
+.visitors-copy h2{font-size:clamp(34px,3.6vw,49px);line-height:1.14}
+.visitors-copy h2 em{color:var(--red);font-weight:400}
+.visitors-copy>p:not(.eyebrow){max-width:440px;font-size:15px;line-height:1.85;margin:24px 0 30px}
+.visitor-detail{display:flex;gap:19px;border-top:1px solid var(--line);padding:18px 0 0;margin-top:18px}
+.visitor-detail>span{font:italic 23px var(--serif);color:#987743}
+.visitor-detail h3{font-size:16px;line-height:1.45;letter-spacing:0}
+.visitor-detail p{font-size:13px;line-height:1.8;margin:7px 0 0}
+@media(max-width:900px){.visitors{padding:60px 5% 0;gap:6%}.visitors-copy h2{font-size:35px}}
+@media(max-width:620px){.visitors{grid-template-columns:1fr;padding:45px 6% 0;gap:30px}.visitors-photo{max-width:360px}.visitors-copy h2{font-size:37px}.visitors-copy .eyebrow{font-size:8px;letter-spacing:1.25px}.visitors-copy>p:not(.eyebrow){margin:20px 0 25px}}

@@ -68,6 +68,12 @@ Erforderlich vor dem Start:
 
 ## Gestaltung und Quellen
 
+Ergänzung vom 14. Oktober 2026: Ein einzelner Bildabschnitt zeigt genau einen Samichlaus und einen Schmutzli. Die Nutzerfotos 40232.jpg und 40230.jpg dienen als Referenz; das Gruppenfoto wird nicht veröffentlicht. Rote Mitra mit Goldrand, roter Mantel, Buch und Laterne prägen den Abschnitt. Die Originalfotos bleiben unverändert. Auch künftig auf der gesamten Seite höchstens ein abgebildeter Samichlaus und ein abgebildeter Schmutzli, keine Wiederholungen als dekorative Figuren.
+
+Datei: assets/samichlaus-schmutzli.png, eingebautes Imagegen-Werkzeug, bearbeitet aus 40230.jpg. Prompt:
+
+> Edit this reference photograph into a polished natural editorial photograph for the Chlausehuus Engelburg website. Show EXACTLY ONE Samichlaus and EXACTLY ONE Schmutzli, two people total, no other people, no duplicated figures or reflections. Preserve the recognisable clothing and local tradition from the photo: Samichlaus on left with tall red bishop mitre with gold piping, red cape with gold trim, long white beard, white robe, white gloves, curved bishop staff and red book. Schmutzli on right with black hooded robe, dark curly beard and the glowing warm brass lantern between them, carrying his natural twig bundle. Retain authentic Swiss shingled house facade and softly glowing window, but quietly simplify the background. Reduce motion blur, natural realistic textures, gentle dusk light with the red cape and warm amber lantern as main accents. Portrait 3:4 composition with both characters fully included, dignified and welcoming, not spooky, not commercial American Santa. No typography, no logo, no extra characters, no extra lanterns or mitres. Faithful photographic adaptation, not cartoon or costume redesign.
+
 Gestaltungsrichtung: ruhiger editorialer Advent, warmes Elfenbein, dunkles Tannengrün, zurückhaltendes Bordeaux, grosse Serifenschrift, klare Formulare. Keine zusätzlichen Skills installiert. Die vorhandenen Sites- und Imagegen-Anleitungen wurden verwendet; als Designreferenzen wurden Anthropic frontend-design, OpenAI frontend-app-builder und Vercel Web Interface Guidelines geprüft:
 
 - https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md
