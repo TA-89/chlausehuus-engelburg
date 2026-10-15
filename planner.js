@@ -1,4 +1,5 @@
 import {minutes,fixAppointment} from './domain.js';
+export const groupCount=(state,day)=>state.groups?.[day]||(day==='2026-12-05'?5:4);
 export const timeText=n=>`${String(Math.floor(n/60)).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`;
 export const overlaps=(a,b)=>a.slot?.date===b.slot?.date&&a.tour===b.tour&&minutes(a.slot.time)<minutes(b.slot.time)+Number(b.duration)+10&&minutes(b.slot.time)<minutes(a.slot.time)+Number(a.duration)+10;
 export function cardColumns(visits){
@@ -15,14 +16,14 @@ export function calendarEntries(state){
  for(const r of state.requests.filter(r=>!r.slot||!r.tour)){
   const date=r.slot?.date||r.preferred,window=r.days.find(d=>d.date===date);if(!window)continue;
   const candidate={...r,slot:r.slot||{date,time:window.wish},suggestion:true};
-  const options=[1,2,3,4,5].filter(t=>!state.locked.includes(date+'-'+t));
+  const options=Array.from({length:groupCount(state,date)},(_,i)=>i+1).filter(t=>!state.locked.includes(date+'-'+t));
   const score=t=>{const group=result.filter(x=>x.slot.date===date&&x.tour===t);return group.filter(x=>overlaps({...candidate,tour:t},x)).length*100+Math.max(0,group.length-3)*10+group.length;};
   candidate.tour=r.tour||options.sort((a,b)=>score(a)-score(b)||a-b)[0]||1;result.push(candidate);
  }return result;
 }
 export function moveVisit(state,id,slot,tour){
  const r=state.requests.find(x=>x.id===id);if(!r)throw Error('Anfrage nicht gefunden.');
- if(!Number.isInteger(tour)||tour<1||tour>5)throw Error('Bitte Gruppe 1 bis 5 wählen.');
+ if(!Number.isInteger(tour)||tour<1||tour>groupCount(state,slot.date))throw Error('Diese Gruppe ist an diesem Tag nicht aktiv. Bitte zuerst die Gruppenanzahl erhöhen (maximal 5).');
  if(r.confirmed&&(r.slot.date!==slot.date||r.slot.time!==slot.time))throw Error('Bestätigte Besuchszeiten bleiben geschützt. Bitte zuerst persönlich Rücksprache halten.');
  if((r.slot&&state.locked.includes(r.slot.date+'-'+r.tour))||state.locked.includes(slot.date+'-'+tour))throw Error('Diese Tour ist fixiert. Zuerst die Planung wieder öffnen.');
  if(!r.confirmed)fixAppointment(r,slot,state.hours);
