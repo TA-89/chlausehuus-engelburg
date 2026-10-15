@@ -6,6 +6,12 @@ export const defaultHours=()=>Object.fromEntries(DAYS.map((d,i)=>[d,{from:i===3?
 export const minutes=t=>{const [h,m]=t.split(':').map(Number);return h*60+m;};
 export const completeChild=c=>Boolean((c.praise?.trim()&&c.practice?.trim())||c.files?.length);
 export const children=r=>r.families.flatMap(f=>f.children);
+export const isGuestChild=(c,f)=>c.guest??Boolean(c.last?.trim()&&c.last.trim()!==f.name?.trim());
+export function setChildSurname(c,f,guest,last=''){c.guest=guest;c.last=(guest?last:f.name||'').trim();}
+export function confirmationText(r,slot,note=''){
+ const date=LABELS[DAYS.indexOf(slot?.date)]||slot?.date||'noch offen';
+ return `Guten Tag ${r.contact}\n\nGerne bestätigen wir Ihren Chlausbesuch am ${date} um ${slot?.time||'–'} Uhr.\nBesuchsadresse: ${r.address}, 9032 Engelburg.\n\n${note.trim()?note.trim()+'\n\n':''}Wir freuen uns auf Ihren Besuchstermin. Bitte ergänzen Sie die Kinderunterlagen bis 26. November 2026, 23:59 Uhr, sofern noch Angaben fehlen.\n\nFreundliche Grüsse\nChlausemueter Brigitte Arnold\nTannenbergstrasse 26a\n9032 Engelburg\n079 732 02 37\nChlausengruppe Engelburg · Verkehrsverein Engelburg`;
+}
 export function validateRequest(r,now=new Date(),hours=defaultHours()){
  const errors=[];
  if(now>=CLOSE)errors.push('Die Anmeldefrist ist abgelaufen.');
