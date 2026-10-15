@@ -25,7 +25,7 @@ jobs:
       - name: Nur öffentliche Demo-Dateien bereitstellen
         run: |
           mkdir public
-          cp index.html admin.html styles.css visitors.css admin.css app.js admin.js domain.js store.js planner.js calendar.js manual.js public/
+          cp index.html admin.html styles.css visitors.css admin.css app.js admin.js domain.js store.js planner.js calendar.js manual.js details.js special.js seasons.js tour.js tour.html public/
           cp -R assets public/assets
           touch public/.nojekyll
       - uses: actions/configure-pages@v5

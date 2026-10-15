@@ -1,5 +1,5 @@
 import {minutes,fixAppointment} from './domain.js';
-export const groupCount=(state,day)=>state.groups?.[day]||(day==='2026-12-05'?5:4);
+export const groupCount=(state,day)=>state.groups?.[day]||(new Date(day+'T12:00:00').getDay()===6?5:4);
 export function destinationStatus(state,entries,id,slot,tour){
  try{moveVisit(state,id,slot,tour);}catch(e){return {kind:'blocked',label:e.message};}
  const r=state.requests.find(x=>x.id===id),candidate={...r,slot,tour};

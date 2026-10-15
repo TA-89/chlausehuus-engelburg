@@ -1,4 +1,6 @@
-import {DAYS,defaultHours} from './domain.js';
+import {configureSeason} from './domain.js';
+const DAYS=['2026-12-02','2026-12-03','2026-12-04','2026-12-05'];
+const defaultHours=()=>Object.fromEntries(DAYS.map((d,i)=>[d,{from:i===3?'10:00':'17:00',to:i===3?'23:00':'21:00'}]));
 const key='chlausehuus-demo-v1';
 function originalSeed(){return {hours:defaultHours(),locked:[],requests:[['Anna Muster','Musterweg 1',2,0,false,1],['Daniel Beispiel','Beispielgasse 4',3,0,true,1],['Lea Demo','Demoweg 8',1,1,false,0],['Simon Muster','Musterweg 12',2,2,true,2]].map(([contact,address,n,i,confirmed,tour],index)=>({id:'DEMO-'+(101+index),contact,address,email:'demo@example.invalid',phone:'Demo – keine Telefonnummer',town:'Engelburg',created:'2026-10-13T12:00:00+02:00',families:[{name:contact.split(' ')[1],children:Array.from({length:n},(_,j)=>({first:['Mila','Noah','Lina'][j],last:contact.split(' ')[1],age:5+j,praise:confirmed?'Hilft gerne und teilt mit anderen.':'',practice:confirmed?'Das Aufräumen darf noch geübt werden.':'',files:[]}))}],days:[{date:DAYS[i],from:'17:00',to:'21:00',wish:'18:00'},{date:DAYS[3],from:'10:00',to:'23:00',wish:'17:00'}],preferred:DAYS[i],confirmed,slot:confirmed?{date:DAYS[i],time:'18:00'}:null,tour:tour||null,duration:30,order:index+1,gifts:'Geschenksack beim Eingang (Beispiel).',mail:index===1?'Demo-Versandfehler':confirmed?'Demo-Versand simuliert':'nicht gesendet',coords:[47.439+index*.001,9.345+index*.001]}))};}
 export function seed(){
@@ -11,6 +13,7 @@ export function seed(){
  });
  state.requests.forEach(r=>{r.example=true;if(r.slot?.date!==DAYS[3]&&r.tour===5){r.tour=1;r.slot.time="20:00";r.days.find(d=>d.date===r.slot.date).wish="20:00";r.order=4;}});state.seedVersion=2;return state;
 }
-export function load(){try{const stored=JSON.parse(sessionStorage.getItem(key));if(!stored)return seed();if(stored.seedVersion!==2){const existing=new Set(stored.requests.map(r=>r.id));stored.requests.push(...seed().requests.filter(r=>!existing.has(r.id)));stored.seedVersion=2;save(stored);}return stored;}catch{return seed();}}
-export function save(state){sessionStorage.setItem(key,JSON.stringify(state));}
-export function reset(){sessionStorage.removeItem(key);}
+const storage=()=>typeof localStorage!=='undefined'?localStorage:sessionStorage;
+export function load(){let state;try{state=JSON.parse(storage().getItem(key)||sessionStorage.getItem(key));}catch{}if(!state)state=seed();state.year ||= 2026;if(state.seedVersion!==2){const existing=new Set(state.requests.map(r=>r.id));state.requests.push(...seed().requests.filter(r=>!existing.has(r.id)));state.seedVersion=2;}configureSeason(state);return state;}
+export function save(state){storage().setItem(key,JSON.stringify(state));configureSeason(state);}
+export function reset(){const target=storage();for(let i=target.length-1;i>=0;i--){const k=target.key(i);if(k?.startsWith('chlaus-tour-'))target.removeItem(k);}target.removeItem(key);if(typeof sessionStorage!=='undefined')sessionStorage.removeItem(key);}

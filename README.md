@@ -1,6 +1,6 @@
 # Chlausehuus Engelburg – prüfbare Demo
 
-Stand: 14. Oktober 2026. Diese Version ist eine interaktive Demo, kein produktives Anmeldesystem.
+Stand: 15. Oktober 2026. Diese Version ist eine interaktive Demo, kein produktives Anmeldesystem.
 
 ## Lokal öffnen
 
@@ -22,10 +22,10 @@ npm run check
 - Responsive Einladung mit eigenständig aus dem Nutzerbild abgeleitetem Bild ohne Personen.
 - Fünf Formularschritte: Kontakt, beliebig mehrere Familien/Kinder, mögliche Tage mit genau einem Wunschtag und Zeitfenstern, Kindertexte/Dateiauswahl, Prüfung.
 - Eine Anfrage pro gemeinsamem Besuch. Duplikathinweis anhand gleicher Adresse, keine blinde Sperre.
-- Anfrage in Browser-Sitzung speichern, lokal direkt nach Absenden wieder bearbeiten. Keine kontobasierte Anmeldung.
+- Anfrage lokal im Browser speichern, lokal direkt nach Absenden wieder bearbeiten. Keine kontobasierte Anmeldung.
 - Fristenprüfung nach Schweizer Zeit: Unterlagen Ende 26. November; Erinnerung nur am 23.; Anmeldung bis 28. November um 10 Uhr. Nach Unterlagenfrist neue Anfragen nur vollständig. Nach Anmeldeschluss bleibt die Seite sichtbar.
 - Verwaltung mit Suche, Statusfiltern, zwei Tagen Antwortfrist, fehlenden Unterlagen und separatem Mailfehlerstatus.
-- Termin fixieren ohne Tourenzuordnung; bestätigter Tag und Beginn bleiben geschützt. Bestätigung und Mailzustand sind separate Felder. Simulierter Fehler mit Wiederholung.
+- Termin nach Tourenzuordnung fixieren; bestätigter Tag und Beginn bleiben geschützt. Bestätigung und Mailzustand sind separate Felder. Editierbare vollständige Bestätigungs-Mail mit simulierter Wiederholung.
 - Dauer, Tour und Reihenfolge manuell ändern. Fünf Touren je Tag. Konflikte inklusive angenommener zehn Minuten Wegpuffer, falscher Reihenfolge und mehr als fünf zeitgleichen Besuchen erkennen.
 - Touren fixieren/wieder öffnen. Druckansicht mit Familien, Kindern, Texten, Reihenfolge und Platz für die zwei gewählten Männer beim Gant.
 - Karte über Leaflet/OpenStreetMap nach explizitem Laden. Erfundenen Beispieldaten sind illustrative Positionen zugeordnet; neue Anfragen ohne Geokodierung bleiben ausdrücklich als «Position fehlt» in der vollständigen Liste. Keine automatische Routenoptimierung.
@@ -33,7 +33,7 @@ npm run check
 
 ## Bewusst simuliert – nicht für echte Daten verwenden
 
-Die Verwaltung ist öffentlich und hat **keinen Zugriffsschutz**. Daten liegen ausschliesslich in sessionStorage des jeweiligen Browser-Tabs. Sie sind nicht zwischen Geräten synchronisiert und keine dauerhafte Speicherung. Das Schliessen einer Sitzung kann sie entfernen. Keine Datenbank, Server-API, echte Uploads, persönliche Mail-Links, Mailzustellungen oder automatischen Hintergrundjobs sind angeschlossen.
+Die Verwaltung ist öffentlich und hat **keinen Zugriffsschutz**. Daten liegen ausschliesslich in localStorage dieses Browsers. Bestehende sessionStorage-Demos werden übernommen. Sie sind nicht zwischen Geräten synchronisiert. Saisonwechsel bewahrt vorherige Jahre; Zurücksetzen oder Löschen der Browserdaten entfernt sie. JSON-Sicherung und Wiederherstellung sind verfügbar. Keine Datenbank, Server-API, echte Uploads, persönliche Mail-Links, Mailzustellungen oder automatischen Hintergrundjobs sind angeschlossen.
 
 Dateiauswahl prüft Typ/Grösse und merkt nur Dateinamen, Typ und Grösse; Dateiinhalte werden nicht hochgeladen, gespeichert oder gedruckt. Ein ausgewählter Dateiname zählt nur in dieser ausdrücklich markierten Demo als vorhandene Unterlage. Im Livebetrieb darf erst ein erfolgreich gespeichertes, geprüftes Dokument zählen.
 
@@ -107,3 +107,13 @@ Kalender: fünf Gruppen, 15-Minuten-Raster, unverbindliche Wunschvorschläge, Dr
 Dezente lesbare Beschriftung im Türbild als HTML-Overlay. Besuchsart drinnen/draussen, freiwillige Geschenkentscheidung und weitere Mitteilungen im zweiten Formularschritt; Geschenkort nur bei Ja. Kalenderkarten zeigen die Strasse, Doppelklick öffnet die bearbeitbaren Details. Bestätigte Besuche lassen sich zwischen Gruppen ziehen, ihre Zeit bleibt unverändert. Vier aktive Gruppen als Tagesstandard, Samstag fünf; maximal fünf, bestehende Besuche in höheren Gruppen bleiben sichtbar, bis sie umgeplant sind.
 Kalender-Zielhilfe: Beim Anklicken und Ziehen werden erlaubte freie Beginnzeiten grün, Kollisionen inklusive Wegpuffer gelb schraffiert und unzulässige Ziele grau dargestellt. Eine Zielvorschau zeigt Dauer, Uhrzeit und Konfliktgrund. Bestätigte Termine zeigen ausschliesslich ihre feste Zeit als erlaubtes Ziel.
 Kinder übernehmen automatisch den Familiennamen; nur Gastkinder erhalten ein eigenes Nachnamenfeld, auch bei manueller Erfassung. Der Kalender lässt sich über Bildschirmfüllend auf die ganze Browserfläche erweitern (Escape zum Verkleinern). Im Termindetail wird eine optionale persönliche Nachricht live in den Bestätigungstext eingefügt; Entwurf und zuletzt simulierter Versandtext bleiben in der Demo-Sitzung gespeichert. Kein echter Mailversand.
+
+## Erweiterung 15. Oktober: Anmeldung und Tourenübergabe
+
+Schritt 2 enthält keine allgemeinen Mitteilungen mehr. Geschenke: Ja blendet einen erforderlichen Fundort ein, Nein blendet ihn aus. Schritt 3 fragt zuerst Wunschtag und Wunschzeit ab, anschliessend optionale Alternativen. Schritt 4: Lob genügt als Kindertext, Verbesserung/Funfact/Dateien sind freiwillig; allgemeine Mitteilungen am Ende. Gastkinder behalten ihr eigenes Nachnamenfeld.
+
+Kalenderkarten zeigen Familiennamen, Adresse, Kinder- und Familienzahl. Auswahl vergrössert die Karte mit Wunschzeit und Kontakt. Doppelklick öffnet Zusammenfassung, Zeitprüfung und direkt editierbare Mail. Spezialtermine haben Bezeichnung, Kontakt, Teilnehmende und festen Zeitwunsch. Der separate Tourenplanungsreiter entfällt; Fixieren, Öffnen, Druck und Übergabe liegen an der Kalendergruppe.
+
+Besuchstage und Fristen sind saisonabhängig. Beim Jahrwechsel werden alle Daten der vorherigen Saison in der lokalen Sicherung behalten. Tourenkontakte für Chlaus und Schmutzli sind pro Datum/Gruppe gespeichert. Fixierte Touren erzeugen eine separate lokale Vorschauseite und eine herunterladbare eigenständige HTML-Datei mit Route, Programmpunkten und Kindertexten. Mail-/WhatsApp-Links öffnen nur Entwürfe; keine Nachrichten wurden gesendet. Die Demo-Datei muss manuell beigefügt werden. Lokale Vorschau-Tokens sind KEIN geräteübergreifender Zugriffsschutz; echte sichere Unterlagenlinks benötigen Backend, Ablaufzeit, Widerruf und tourbezogene Berechtigungen. Keine Kinderinformationen im URL-Fragment oder Repository.
+
+Validierung: 26 Fachlogiktests, Syntaxprüfungen aller Module, Browserdurchlauf Anmeldung (Lob ohne Übung/Anhang), individuelle Mail gespeichert, Spezialtermin, zusätzlicher Tag, Saisonwechsel und Rückkehr, Reload sowie separate Tourenvorschau.
