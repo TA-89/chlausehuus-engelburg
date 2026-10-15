@@ -105,3 +105,4 @@ Kalender: fünf Gruppen, 15-Minuten-Raster, unverbindliche Wunschvorschläge, Dr
 
 ## Anpassung 15. Oktober
 Dezente lesbare Beschriftung im Türbild als HTML-Overlay. Besuchsart drinnen/draussen, freiwillige Geschenkentscheidung und weitere Mitteilungen im zweiten Formularschritt; Geschenkort nur bei Ja. Kalenderkarten zeigen die Strasse, Doppelklick öffnet die bearbeitbaren Details. Bestätigte Besuche lassen sich zwischen Gruppen ziehen, ihre Zeit bleibt unverändert. Vier aktive Gruppen als Tagesstandard, Samstag fünf; maximal fünf, bestehende Besuche in höheren Gruppen bleiben sichtbar, bis sie umgeplant sind.
+Kalender-Zielhilfe: Beim Anklicken und Ziehen werden erlaubte freie Beginnzeiten grün, Kollisionen inklusive Wegpuffer gelb schraffiert und unzulässige Ziele grau dargestellt. Eine Zielvorschau zeigt Dauer, Uhrzeit und Konfliktgrund. Bestätigte Termine zeigen ausschliesslich ihre feste Zeit als erlaubtes Ziel.

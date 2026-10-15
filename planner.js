@@ -1,5 +1,11 @@
 import {minutes,fixAppointment} from './domain.js';
 export const groupCount=(state,day)=>state.groups?.[day]||(day==='2026-12-05'?5:4);
+export function destinationStatus(state,entries,id,slot,tour){
+ try{moveVisit(state,id,slot,tour);}catch(e){return {kind:'blocked',label:e.message};}
+ const r=state.requests.find(x=>x.id===id),candidate={...r,slot,tour};
+ const clashes=entries.filter(x=>x.id!==id&&overlaps(candidate,x));
+ return clashes.length?{kind:'conflict',label:'Kollision mit '+clashes.map(x=>x.contact).join(', ')+' (inkl. 10 Min. Wegpuffer)'}:{kind:'free',label:'Frei · Besuch und 10 Min. Wegpuffer passen'};
+}
 export const timeText=n=>`${String(Math.floor(n/60)).padStart(2,'0')}:${String(n%60).padStart(2,'0')}`;
 export const overlaps=(a,b)=>a.slot?.date===b.slot?.date&&a.tour===b.tour&&minutes(a.slot.time)<minutes(b.slot.time)+Number(b.duration)+10&&minutes(b.slot.time)<minutes(a.slot.time)+Number(a.duration)+10;
 export function cardColumns(visits){
